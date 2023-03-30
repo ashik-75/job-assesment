@@ -1,26 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
-
-const links = [
-  {
-    id: 1,
-    url: "/analytics",
-    name: "Analytics",
-  },
-  {
-    id: 2,
-    url: "/resources",
-    name: "Resources",
-  },
-  {
-    id: 2,
-    url: "/payment",
-    name: "Payment",
-  },
-];
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div className="p-5 bg-slate-50">
+    <header className="p-5 bg-slate-50 sticky top-0 left-0">
       <div className=" max-w-7xl mx-auto flex items-center gap-5">
         <div>
           <Link to={"/"}>
@@ -32,22 +14,9 @@ function Header() {
           </Link>
         </div>
 
-        <div>
-          <ul className="flex gap-5">
-            {links.map((link) => (
-              <li key={link.id}>
-                <NavLink
-                  to={link.url}
-                  className={({ isActive }) => (isActive ? "font-medium" : "")}
-                >
-                  {link.name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <div></div>
       </div>
-    </div>
+    </header>
   );
 }
 
