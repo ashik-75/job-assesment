@@ -6,19 +6,19 @@ import useUsers from "../hooks/useUsers";
 function Homepage() {
   const [data, loading, error] = useUsers();
 
-  return (
-    <div className="p-5">
-      <div className="max-w-7xl mx-auto">
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <Error error={error} />
-        ) : (
-          <Users users={data?.users} />
-        )}
-      </div>
-    </div>
-  );
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <Error error={error} />;
+  }
+
+  if (data?.users && !data?.users?.length) {
+    return <div>Users not found</div>;
+  }
+
+  return <Users users={data.users} />;
 }
 
 export default Homepage;

@@ -14,11 +14,13 @@ function Profile({ user, posts }: { user: UserType; posts: PostType[] }) {
       </div>
 
       <div className="max-w-3xl">
-        <h1 className="font-bold text-2xl font-mont">Posts</h1>
+        <h1 className="font-bold text-2xl font-mont mb-5">Posts ...</h1>
         <div className="space-y-2">
-          {posts?.map((post) => (
-            <Post key={post.id} {...post} />
-          ))}
+          {posts?.length > 0 ? (
+            posts?.map((post) => <Post key={post.id} {...post} />)
+          ) : (
+            <div>Posts Not Found</div>
+          )}
         </div>
       </div>
     </div>
