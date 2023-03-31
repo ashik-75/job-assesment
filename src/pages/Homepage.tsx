@@ -1,3 +1,5 @@
+import Error from "../components/Error";
+import Loader from "../components/Loader";
 import Users from "../components/Users";
 import useUsers from "../hooks/useUsers";
 
@@ -8,11 +10,11 @@ function Homepage() {
     <div className="p-5">
       <div className="max-w-7xl mx-auto">
         {loading ? (
-          <div>Loading ...</div>
+          <Loader />
         ) : error ? (
-          <div>{error}</div>
+          <Error error={error} />
         ) : (
-          <Users users={data.users} />
+          <Users users={data?.users} />
         )}
       </div>
     </div>

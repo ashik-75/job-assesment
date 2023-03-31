@@ -13,7 +13,7 @@ export type UserType = {
   company: CompanyType;
 };
 
-export type UserResponse = {
+export type UsersResponseType = {
   limit: number;
   skip: number;
   total: number;

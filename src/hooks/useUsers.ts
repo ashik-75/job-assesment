@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { UserResponse } from "../types/user.types";
+import { UsersResponseType } from "../types/user.types";
 
 function useUsers() {
-  const [data, setData] = useState<UserResponse>({} as UserResponse);
+  const [data, setData] = useState<UsersResponseType>({} as UsersResponseType);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchUsers() {
+    async function fetchUsersData() {
       setLoading(true);
       try {
         const response = await axios.get("https://dummyjson.com/users");
@@ -24,9 +24,9 @@ function useUsers() {
       }
     }
 
-    fetchUsers();
+    fetchUsersData();
   }, []);
-  return [data, loading, error] as [UserResponse, boolean, string | null];
+  return [data, loading, error] as [UsersResponseType, boolean, string | null];
 }
 
 export default useUsers;

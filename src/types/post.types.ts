@@ -5,7 +5,7 @@ export type PostType = {
   userId: number;
 };
 
-export type PostResponse = {
+export type PostsResponseType = {
   limit: number;
   skip: number;
   total: number;

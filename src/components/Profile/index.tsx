@@ -6,16 +6,17 @@ function Profile({ user, posts }: { user: UserType; posts: PostType[] }) {
   return (
     <div className="space-y-5">
       <div>
-        <h1>
-          {user.firstName} {user.lastName}
+        <h1 className="font-bold text-lg">Account</h1>
+        <h1 className="font-medium">
+          {user?.firstName} {user?.lastName}
         </h1>
-        <p>{user.email}</p>
+        <p>{user?.email}</p>
       </div>
 
-      <div>
+      <div className="max-w-3xl">
         <h1 className="font-bold text-2xl font-mont">Posts</h1>
         <div className="space-y-2">
-          {posts.map((post) => (
+          {posts?.map((post) => (
             <Post key={post.id} {...post} />
           ))}
         </div>

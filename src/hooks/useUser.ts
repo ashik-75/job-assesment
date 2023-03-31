@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { PostResponse } from "../types/post.types";
+import { PostsResponseType } from "../types/post.types";
 import { UserType } from "../types/user.types";
 
 function useUser(userId: number) {
   const [user, setUser] = useState<UserType>({} as UserType);
-  const [data, setData] = useState<PostResponse>({} as PostResponse);
+  const [data, setData] = useState<PostsResponseType>({} as PostsResponseType);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -21,10 +21,11 @@ function useUser(userId: number) {
         );
         setLoading(false);
 
-        // filled state
+        // filled state with response
         setUser(userResponse.data);
         setData(postsResponse.data);
       } catch (error) {
+        // handle error state
         setLoading(false);
         if (axios.isAxiosError(error)) {
           setError(error.response?.data);
@@ -38,7 +39,7 @@ function useUser(userId: number) {
   }, []);
   return [user, data, loading, error] as [
     UserType,
-    PostResponse,
+    PostsResponseType,
     boolean,
     string | null
   ];
